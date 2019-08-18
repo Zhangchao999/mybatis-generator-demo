@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 配置生成pojo的序列化的插件  -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+        <!-- 配置生成pojo的toString()方法的插件 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+        <!--是否在代码中显示注释(该注释只显示生成者是谁 没有数据库表字段注释， 这里不生成) true 为不显示  false为显示-->
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <!-- 注释是否添加数据库表的备注信息 -->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://127.0.0.1:3306/geoary?characterEncoding=UTF-8" userId="root"
+            password="123456">
+            <!-- 防止生成字段不全 -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!--生成pojo类存放位置-->
+        <javaModelGenerator targetPackage="cn.geoary.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成xml映射文件存放位置-->
+        <sqlMapGenerator targetPackage="mybatis/mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--生成mapper类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.geoary.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="common_mb" domainObjectName="CommonMB" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            <columnOverride column="is_effective" javaType="java.lang.Integer"/>
+        </table>
+
+        <table tableName="t_article_base" domainObjectName="ArticleBase" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="article_id" sqlStatement="JDBC"/>
+            <columnOverride column="is_toppding" javaType="java.lang.Integer"/>
+            <columnOverride column="is_draft" javaType="java.lang.Integer"/>
+        </table>
+
+        <table tableName="t_article_content" domainObjectName="ArticleContent" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="content_id" sqlStatement="JDBC"/>
+            <columnOverride column="content " javaType="VARCHAR"/>
+        </table>
+
+        <table tableName="t_article_pictire" domainObjectName="ArticlePicture" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="pic_id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="t_message" domainObjectName="Message" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="msg_id" sqlStatement="JDBC"/>
+            <columnOverride column="is_effective" javaType="java.lang.Integer"/>
+        </table>
+
+        <table tableName="t_sys_log" domainObjectName="SysLog" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="log_id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="t_user" domainObjectName="User" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="user_id" sqlStatement="JDBC"/>
+            <columnOverride column="is_disable" javaType="java.lang.Integer"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
